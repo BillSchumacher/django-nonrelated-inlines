@@ -15,9 +15,7 @@ class NonrelatedInlineFormSet(BaseModelFormSet):
     @classmethod
     def get_default_prefix(cls):
         opts = cls.model._meta
-        return (
-            opts.app_label + '-' + opts.model_name
-        )
+        return f'{opts.app_label}-{opts.model_name}'
 
     def save_new(self, form, commit=True):
         obj = super().save_new(form, commit=False)
